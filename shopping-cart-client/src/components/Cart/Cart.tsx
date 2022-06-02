@@ -27,9 +27,9 @@ const countries = countryListService.getCountryList();
 
 const Cart = ({ cartItems, addToCart, removeFromCart }: CartProps) => {
     const navigate = useNavigate();
-    const checkoutHandler = (order: IOrder) =>{ 
+    const checkoutHandler = (order: IOrder) => {
         service.createOrder(order);
-        
+
         navigate('/thankyou')
     };
 
@@ -46,8 +46,8 @@ const Cart = ({ cartItems, addToCart, removeFromCart }: CartProps) => {
     }, 0)
 
 
-    const { data: shippingCostData, isLoading: shippingCostLoading, error: shippingCostError } 
-    = useQuery<number>('shippingcost', () => service.getShippingCost(totalCost));
+    const { data: shippingCostData, isLoading: shippingCostLoading, error: shippingCostError }
+        = useQuery<number>('shippingcost', () => service.getShippingCost(totalCost));
 
     useEffect(() => {
 
@@ -73,10 +73,10 @@ const Cart = ({ cartItems, addToCart, removeFromCart }: CartProps) => {
             setCurrency(country.currencyCode);
         }
     }
-    const order = {
+    const order: IOrder = {
         products: cartItems,
         shippingCost: shippingCostData ? shippingCostData * currencyConversionFactor : 0,
-        itemCost: totalCost * currencyConversionFactor
+        itemsCost: totalCost * currencyConversionFactor
     }
 
     return (
@@ -97,9 +97,9 @@ const Cart = ({ cartItems, addToCart, removeFromCart }: CartProps) => {
                     Select Country <CountryList countries={countries} handleOnCountryChange={e => HandleOnCountryChange(e)}></CountryList>
                 </div>
                 <div>
-                    <p>Item Cost: {selectedCurrency} {order.itemCost.toFixed(2)} </p>
+                    <p>Item Cost: {selectedCurrency} {order.itemsCost.toFixed(2)} </p>
                     <p>Shipping Cost: {selectedCurrency} {order.shippingCost.toFixed(2)}</p>
-                    <p>Total Basket Cost: {selectedCurrency} {(order.itemCost + order.shippingCost).toFixed(2)}</p>
+                    <p>Total Basket Cost: {selectedCurrency} {(order.itemsCost + order.shippingCost).toFixed(2)}</p>
                 </div>
                 <Button onClick={() => checkoutHandler(order)}>
                     Place Order
