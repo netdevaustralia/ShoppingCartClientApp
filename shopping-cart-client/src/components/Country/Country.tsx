@@ -1,19 +1,10 @@
-import { MenuItem, Select } from "@mui/material";
-import { useState } from "react";
-import { AnyStyledComponent } from "styled-components";
 import { ICountry } from "../../interfaces/ICountry";
-import { CountryListService } from "../../services/countryListService";
-
-import Item from "../Item/Item";
 import { Wrapper } from "./Country.style";
-
-
 
 interface CountryListProps {
     handleOnCountryChange: (countryId: number) => void;
     countries: ICountry[]
 };
-
 
 const CountryList = ({ handleOnCountryChange, countries }: CountryListProps) => {
     return <Wrapper>

@@ -23,10 +23,7 @@ const service = new ShoppingCartService();
 const countryListService = new CountryListService();
 const currencyConversionService = new CurrencyConversionService();
 const config = new Configuration();
-
 const countries = countryListService.getCountryList();
-
-
 
 const Cart = ({ cartItems, addToCart, removeFromCart }: CartProps) => {
     const navigate = useNavigate();
@@ -49,7 +46,8 @@ const Cart = ({ cartItems, addToCart, removeFromCart }: CartProps) => {
     }, 0)
 
 
-    const { data: shippingCostData, isLoading: shippingCostLoading, error: shippingCostError } = useQuery<number>('shippingcost', () => service.getShippingCost(totalCost));
+    const { data: shippingCostData, isLoading: shippingCostLoading, error: shippingCostError } 
+    = useQuery<number>('shippingcost', () => service.getShippingCost(totalCost));
 
     useEffect(() => {
 
@@ -65,7 +63,6 @@ const Cart = ({ cartItems, addToCart, removeFromCart }: CartProps) => {
     if (shippingCostLoading) return <div><LinearProgress /></div>;
 
     if (shippingCostError) return <div>error while calculating shipping cost</div>;
-
 
     const HandleOnCountryChange = (e: number) => {
 

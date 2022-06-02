@@ -12,7 +12,7 @@ import ShoppingCartService from "../../services/shoppingCartService";
 import { IProductListType } from "../../interfaces/IProductListType";
 
 const CartPage = () => {
-   
+
     const [cartOpen, setCartOpen] = useState(false);
     const [cartItems, setCartItems] = useState([] as ICartItemType[]);
     const service = new ShoppingCartService();
@@ -36,7 +36,22 @@ const CartPage = () => {
         })
 
     };
-    const handleRemoveFromCart = (id: number) => null;
+    const handleRemoveFromCart = (id: number) => {
+
+        // setCartItems(prev =>
+        //     {
+        //         return prev.reduce((accumulator, currentItem) => {
+        //             if (currentItem.id === id) {
+        //                 if (currentItem.amount === 1)
+        //                     return accumulator;
+        //                 return [...accumulator, { ...currentItem, amount: currentItem.amount - 1 }];
+        //             }
+        //         });
+        //     }, [] as ICartItemType[]
+        // )) 
+    
+    };
+
     if (productListLoading) return <LinearProgress />;
     if (productListError) return <div>Something went wrong</div>
 

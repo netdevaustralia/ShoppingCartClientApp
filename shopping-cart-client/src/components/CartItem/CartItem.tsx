@@ -1,19 +1,14 @@
 import Button from '@mui/material/Button/Button';
-
-//types
 import { ICartItemType } from "../../interfaces/ICartItemType";
-import { StyledButton } from '../../App.style';
-
-//style
 import { Wrapper } from './CartItem.style';
 
-type Props = {
+interface CartItemProps {
     item: ICartItemType;
     addToCart: (clickedItem: ICartItemType) => void;
     removeFromCart: (id: number) => void;
 }
 
-const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => (
+const CartItem = ({ item, addToCart, removeFromCart }: CartItemProps) => (
     <Wrapper>
         <div>
             <h3>{item.title}</h3>
@@ -21,6 +16,15 @@ const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => (
                 <p>Price: ${item.price} {item.currency}</p>
                 <p>Quantity: {item.amount}</p>
                 <p>Total: ${(item.amount * item.price).toFixed(2)}</p>
+            </div>
+            <div className='button'>
+                <Button variant="contained" size="small"  onClick={() => removeFromCart(item.id)}>
+                    -
+                </Button>
+                <p>{item.amount}</p>
+                <Button variant="contained" size="small"  onClick={() => addToCart(item)}>
+                    +
+                </Button>
             </div>
         </div>
 

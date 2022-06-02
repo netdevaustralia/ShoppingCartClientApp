@@ -12,10 +12,12 @@ padding-bottom: 20px;
 div{
     flex:1;
 }
-.information, .button{
+.information, 
+.button{
     display:flex;
     justify-content: space-between;
 }
+
 img{
     max-width:80px;
     object-fit:cover;

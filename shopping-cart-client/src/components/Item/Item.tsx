@@ -1,7 +1,5 @@
 import { Button } from "@mui/material";
 import {ICartItemType}  from "../../interfaces/ICartItemType";
-
-//Styles
 import { Wrapper } from "./Item.styles";
 
 type Props = {
