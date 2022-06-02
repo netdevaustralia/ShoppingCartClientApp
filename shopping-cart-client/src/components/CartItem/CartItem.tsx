@@ -1,15 +1,15 @@
 import Button from '@mui/material/Button/Button';
 
 //types
-import { CartItemType } from "../../interfaces/CartItemType";
+import { ICartItemType } from "../../interfaces/ICartItemType";
 import { StyledButton } from '../../App.style';
 
 //style
 import { Wrapper } from './CartItem.style';
 
 type Props = {
-    item: CartItemType;
-    addToCart: (clickedItem: CartItemType) => void;
+    item: ICartItemType;
+    addToCart: (clickedItem: ICartItemType) => void;
     removeFromCart: (id: number) => void;
 }
 

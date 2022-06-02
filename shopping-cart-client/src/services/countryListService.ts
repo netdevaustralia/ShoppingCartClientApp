@@ -1,11 +1,11 @@
-import { Country } from '../interfaces/Country';
+import { ICountry } from '../interfaces/ICountry';
 
 export class CountryListService {
-    getCountryList = (): Country[] => {
+    getCountryList = (): ICountry[] => {
         return [
             { id: 1, name: "Australia", currencyCode: "AUD" },
-            { id: 2, name: "UK", currencyCode: "GBP" },
-            { id: 3, name: "NewZealand", currencyCode: "NZD" },
+            { id: 2, name: "United Kingdom", currencyCode: "GBP" },
+            { id: 3, name: "New Zealand", currencyCode: "NZD" },
             { id: 4, name: "India", currencyCode: "INR" }]
     }
 }

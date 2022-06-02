@@ -1,6 +1,6 @@
 import Configuration from "../Configuration";
-import { Order } from "../interfaces/Order";
-import { ProductListType } from "../interfaces/ProductListType";
+import { IOrder } from "../interfaces/IOrder";
+import { IProductListType } from "../interfaces/IProductListType";
 
 export class ShoppingCartService {
     config: Configuration;
@@ -9,7 +9,7 @@ export class ShoppingCartService {
 
     }
 
-    getProducts = async (): Promise<ProductListType> => {
+    getProducts = async (): Promise<IProductListType> => {
         const response = await fetch(this.config.SHOPPING_CART_BASEURL + this.config.RESOURCE_PRODUCT)
             .then(resp => {
                 if (!resp.ok) {
@@ -38,7 +38,7 @@ export class ShoppingCartService {
         return response;
     }
 
-    createOrder = async (order: Order) => {
+    createOrder = async (order: IOrder) => {
 
         const response = await fetch(this.config.SHOPPING_CART_BASEURL + this.config.RESOURCE_BASKET, {
             method: 'POST',

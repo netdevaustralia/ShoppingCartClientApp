@@ -1,12 +1,12 @@
 import { Button } from "@mui/material";
-import {CartItemType}  from "../../interfaces/CartItemType";
+import {ICartItemType}  from "../../interfaces/ICartItemType";
 
 //Styles
 import { Wrapper } from "./Item.styles";
 
 type Props = {
-    item: CartItemType;
-    handleAddToCart: (clickedItem: CartItemType) => void;
+    item: ICartItemType;
+    handleAddToCart: (clickedItem: ICartItemType) => void;
 }
 
 const Item = ({ item, handleAddToCart }: Props) => (

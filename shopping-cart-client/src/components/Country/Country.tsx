@@ -1,7 +1,7 @@
 import { MenuItem, Select } from "@mui/material";
 import { useState } from "react";
 import { AnyStyledComponent } from "styled-components";
-import { Country } from "../../interfaces/Country";
+import { ICountry } from "../../interfaces/ICountry";
 import { CountryListService } from "../../services/countryListService";
 
 import Item from "../Item/Item";
@@ -10,29 +10,18 @@ import { Wrapper } from "./Country.style";
 
 
 interface CountryListProps {
-    handleOnCountryChange: (clickedCountry: Country) => void
+    handleOnCountryChange: (countryId: number) => void;
+    countries: ICountry[]
 };
 
 
-
-
-const service = new CountryListService();
-const countries = service.getCountryList();
-
-
-
-const CountryList = (props:any) => {
-    const [selectedCountry, setCountry] = useState(countries[0]);
-    const handlChange=(e: any)=>{
-        setCountry(e.target.value);
-        props.onChange(selectedCountry);
-    }
-    <Wrapper>
-        <select value={selectedCountry.id} onChange={handlChange}>
+const CountryList = ({ handleOnCountryChange, countries }: CountryListProps) => {
+    return <Wrapper>
+        <select onChange={(e) => handleOnCountryChange(parseInt(e.target.value))}>
             {countries.map(Item => (
                 <option
                     key={Item.id}
-                    value={Item.currencyCode}
+                    value={Item.id}
                 >
                     {Item.name}
                 </option>

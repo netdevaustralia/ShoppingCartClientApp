@@ -1,4 +1,5 @@
 import Configuration from "../Configuration";
+import { IConversionResponse } from "../interfaces/IConversionResponse";
 
 export class CurrencyConversionService {
     config: Configuration
@@ -7,10 +8,10 @@ export class CurrencyConversionService {
 
     }
 
-    convert = async (from: string, to: string, amount: number): Promise<number> => {
+    convert = async (from: string, to: string): Promise<IConversionResponse> => {
         var headers = new Headers();
         headers.append("apikey", this.config.CURRENCY_CONVERSION_APIKEY);
-        const response = await fetch(`${this.config.CURRENCY_CONVERSION_URL}?to=${to}&from=${from}&amount=${amount}`, {
+        const response = await fetch(`${this.config.CURRENCY_CONVERSION_URL}?to=${to}&from=${from}&amount=${1}`, {
             method: 'GET',
             redirect: 'follow',
             headers: headers

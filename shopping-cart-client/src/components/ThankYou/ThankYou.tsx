@@ -1,3 +1,3 @@
-<>
-Thank you
-</>
+export const ThankYouPage = () => {
+    return (<>Thank you</>)
+}

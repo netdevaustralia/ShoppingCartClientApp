@@ -1,4 +1,4 @@
- export interface CartItemType  {
+ export interface ICartItemType  {
     id: number;
     category: string;
     description: string;
