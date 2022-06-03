@@ -36,21 +36,30 @@ const CartPage = () => {
         })
 
     };
-    const handleRemoveFromCart = (id: number) => {
-
-        // setCartItems(prev =>
-        //     {
-        //         return prev.reduce((accumulator, currentItem) => {
-        //             if (currentItem.id === id) {
-        //                 if (currentItem.amount === 1)
-        //                     return accumulator;
-        //                 return [...accumulator, { ...currentItem, amount: currentItem.amount - 1 }];
-        //             }
-        //         });
-        //     }, [] as ICartItemType[]
-        // )) 
     
+    const handleRemoveFromCart = (id: number) => {
+        setCartItems(prev => {
+            const isItemAlreadyInCart = prev.find(item => item.id === id)
+            if (isItemAlreadyInCart) {
+                return prev.map(item => (
+                    (item.id === id && item.amount >0) ? { ...item, amount: item.amount - 1 } : item
+                ))
+            }
+            return [...prev];
+        })
+        // setCartItems(prev => {
+        //     prev.reduce((ack, item) => {
+        //         if (item.id === id) {
+        //             if (item.amount === 1) return ack;
+        //             return [...ack, { ...item, amount: item.amount - 1 }]
+        //         }
+        //     },[])
+
+        // })
     };
+
+
+
 
     if (productListLoading) return <LinearProgress />;
     if (productListError) return <div>Something went wrong</div>

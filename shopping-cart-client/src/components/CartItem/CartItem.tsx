@@ -1,4 +1,4 @@
-import Button from '@mui/material/Button/Button';
+import { Button } from '@mui/material';
 import { ICartItemType } from "../../interfaces/ICartItemType";
 import { Wrapper } from './CartItem.style';
 
@@ -18,11 +18,11 @@ const CartItem = ({ item, addToCart, removeFromCart }: CartItemProps) => (
                 <p>Total: ${(item.amount * item.price).toFixed(2)}</p>
             </div>
             <div className='button'>
-                <Button variant="contained" size="small"  onClick={() => removeFromCart(item.id)}>
+                <Button variant="contained" size="small" onClick={() => removeFromCart(item.id)}>
                     -
                 </Button>
                 <p>{item.amount}</p>
-                <Button variant="contained" size="small"  onClick={() => addToCart(item)}>
+                <Button variant="contained" size="small" onClick={() => addToCart(item)}>
                     +
                 </Button>
             </div>

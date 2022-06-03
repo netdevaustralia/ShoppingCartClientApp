@@ -1,5 +1,4 @@
-import * as React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import CartPage from "./components/Cart/CartPage";
 import { ThankYouPage } from "./components/ThankYou/ThankYou";
 
